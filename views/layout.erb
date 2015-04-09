@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf8">
+  <title><%= @title + ' | Books Read' %></title>
+  <link href="/reset.css" rel="stylesheet">
+  <link href="/style.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <hgroup>
+      <h1><a href="/">Books Read</a></h1>
+      <h2>to keep track and share the books you've read</h2>
+    </hgroup>
+  </header>
+
+  <div id="main">
+    <%= yield %>
+  </div>
+
+  <footer>
+    <p><small>An app by <a href="http://sebastianabondano.tumblr.com">Sebastian Abondano</a>.</small></p>
+  </footer>
+</body>
+</html>
