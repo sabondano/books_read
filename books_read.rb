@@ -50,3 +50,9 @@ get '/:id/delete' do
 	@title = "Confirm deletion of note ##{params[:id]}"
 	erb :delete
 end
+
+delete '/:id' do
+	b = Book.get params[:id]
+	b.destroy
+	redirect '/'
+end
