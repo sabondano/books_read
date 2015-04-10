@@ -56,3 +56,11 @@ delete '/:id' do
 	b.destroy
 	redirect '/'
 end
+
+get '/:id/finished' do
+	b = Book.get params[:id]
+	b.finished = b.finished ? 0 : 1 # flips it
+	b.updated_at = Time.now
+	b.save
+	redirect '/'
+end
