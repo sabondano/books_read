@@ -44,3 +44,9 @@ put '/:id' do
 	b.save
 	redirect '/'
 end
+
+get '/:id/delete' do
+	@book = Book.get params[:id]
+	@title = "Confirm deletion of note ##{params[:id]}"
+	erb :delete
+end
