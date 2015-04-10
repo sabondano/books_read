@@ -1,6 +1,6 @@
 <section id="add">
   <form action="/" method="post">
-    <textarea name ="title" placeholder="Your book..."></textarea>
+    <textarea name ="name" placeholder="Your book..."></textarea>
     <input type="submit" value="Book Read!">
   </form>
 </section>
@@ -8,7 +8,7 @@
 <% @books.each do |book| %>
   <article <%= 'class="complete"' if book.complete %>>
     <p>
-      <% book.title %>
+      <%= book.name %>
       <span><a href="/<%= book.id %>">[edit]</a></span>
     </p>
     <p class="links">

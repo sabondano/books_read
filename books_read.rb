@@ -1,14 +1,14 @@
 require 'sinatra'
 require 'data_mapper'
 
-DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/boos_read.db")
+DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/books_read.db")
 
 class Book
 	include DataMapper::Resource
 
 	property :id, Serial
-	property :title, Text, :required => true
-	property :finished, Boolean, :required => true, :default => false
+	property :name, Text, :required => true
+	property :complete, Boolean, :required => true, :default => false
 	property :created_at, DateTime
 	property :updated_at, DateTime
 end
@@ -23,8 +23,23 @@ end
 
 post '/' do
 	b = Book.new
-	b.title = params[:title]
+	b.name = params[:name]
 	b.created_at = Time.now
+	b.updated_at = Time.now
+	b.save
+	redirect '/'
+end
+
+get '/:id' do
+	@book = Book.get params[:id]
+	@title = "Edit note ##{params[:id]}"
+	erb :edit
+end
+
+put '/:id' do
+	b = Book.get params
+	b.name = params[:content]
+	b.complete = params[:complete] ? 1 : 0
 	b.updated_at = Time.now
 	b.save
 	redirect '/'

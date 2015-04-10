@@ -1,0 +1,11 @@
+<% if @book %>
+  <form action="/<% @book.id %>" method="post" id="edit">
+    <input type="hidden" name="_method" value="put">
+    <textarea name="name"><%= @book.name %></textarea>
+    <input type="checkbox" name="complete" <%= "checked" if @book.complete %>>
+    <input type="submit">
+  </form>
+  <p><a href="/<%= @book.id %>/delete">Delete</a></p>
+<% else %>
+  <p>Book note found.</p>
+<% end %>
