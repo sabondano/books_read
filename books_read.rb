@@ -8,7 +8,7 @@ class Book
 
 	property :id, Serial
 	property :name, Text, :required => true
-	property :complete, Boolean, :required => true, :default => false
+	property :finished, Boolean, :required => true, :default => false
 	property :created_at, DateTime
 	property :updated_at, DateTime
 end
@@ -37,9 +37,9 @@ get '/:id' do
 end
 
 put '/:id' do
-	b = Book.get params
-	b.name = params[:content]
-	b.complete = params[:complete] ? 1 : 0
+	b = Book.get params[:id]
+	b.name = params[:name]
+	b.finished = params[:finished] ? 1 : 0
 	b.updated_at = Time.now
 	b.save
 	redirect '/'
