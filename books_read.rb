@@ -15,6 +15,11 @@ end
 
 DataMapper.finalize.auto_upgrade!
 
+helpers do
+	include Rack::Utils
+	alias_method :h, :escape_html
+end
+
 get '/' do
 	@books = Book.all :order => :id.desc
 	@title = 'All Books'

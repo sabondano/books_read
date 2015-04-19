@@ -8,7 +8,7 @@
 <% @books.each do |book| %>
   <article <%= 'class="complete"' if book.finished %>>
     <p>
-      <%= book.name %>
+      <%=h book.name %>
       <span><a href="/<%= book.id %>">[edit]</a></span>
     </p>
     <p class="links">
